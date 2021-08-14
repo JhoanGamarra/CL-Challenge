@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/teamListFragment"
+        android:name="com.jhoangamarra.condorlabstest.teams.presentation.ui.teams_list.TeamListFragment"
+        android:label="fragment_team_list"
+        tools:layout="@layout/fragment_team_list" >
+        <action
+            android:id="@+id/action_teamListFragment_to_teamDetailFragment"
+            app:destination="@id/teamDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamDetailFragment"
+        android:name="com.jhoangamarra.condorlabstest.teams.presentation.ui.team_detail.TeamDetailFragment"
+        android:label="fragment_team_detail"
+        tools:layout="@layout/fragment_team_detail" >
+        <argument
+            android:name="teamName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_NAME" />
+        <argument
+            android:name="teamDescription"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_DESC" />
+        <argument
+            android:name="teamFoundationYear"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_YEAR" />
+        <argument
+            android:name="teamBadgeImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="bagde.png" />
+        <argument
+            android:name="teamJerseyImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="jersey.png" />
+        <argument
+            android:name="websiteUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_WEBSITE" />
+        <argument
+            android:name="facebookUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_FACEBOOK" />
+        <argument
+            android:name="twitterUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_TWITTER" />
+        <argument
+            android:name="instagramUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_INSTAGRAM" />
+        <argument
+            android:name="youtubeUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NO_YOUTUBE" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.jhoangamarra.condorlabstest.teams.presentation.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_teamListFragment"
+            app:destination="@id/teamListFragment" />
+    </fragment>
+</navigation>
