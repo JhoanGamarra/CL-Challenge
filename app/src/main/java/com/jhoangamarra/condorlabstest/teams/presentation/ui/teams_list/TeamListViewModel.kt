@@ -33,7 +33,7 @@ class TeamListViewModel(private val getTeamsByLeague: GetTeamsByLeague) : ViewMo
     }
 
     //TODO choose league by leagueId in a selector
-    private fun getTeams(leagueId : String ) {
+     fun getTeams(leagueId : String ) {
 
         _isViewLoading.value = true
         viewModelScope.launch {
