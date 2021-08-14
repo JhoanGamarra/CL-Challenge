@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.jhoangamarra.condorlabstest.R
+import com.jhoangamarra.condorlabstest.core.AppConstants
+import com.jhoangamarra.condorlabstest.core.extension.invisible
 import com.jhoangamarra.condorlabstest.databinding.FragmentTeamListBinding
 import com.jhoangamarra.condorlabstest.teams.data.local.AppDatabase
 import com.jhoangamarra.condorlabstest.teams.data.local.source.LocalTeamDataSource
@@ -77,6 +80,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
                 )
             findNavController().navigate(action)
         }
+        retryFetchTeams()
     }
 
     private val fetchTeams = Observer<List<TeamModelView>> { result ->
@@ -98,10 +102,17 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
 
     private val emptyListObserver = Observer<Boolean> {
         Log.d(TAG, "emptyListObserver $it")
-        Glide.with(requireContext()).load(R.drawable.bg_empty_result).centerCrop()
-            .into(binding.ivEmptyView)
         val visibility = if (it) View.VISIBLE else View.GONE
         binding.ivEmptyView.visibility = visibility
+        binding.btnRetry.visibility = visibility
+    }
+
+    private fun retryFetchTeams(){
+        binding.btnRetry.setOnClickListener {
+            viewModel.getTeams(AppConstants.LEAGUE_ID)
+            binding.ivEmptyView.invisible()
+            binding.btnRetry.invisible()
+        }
     }
 
 
