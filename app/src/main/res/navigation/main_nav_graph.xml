@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/teamListFragment"
-        android:name="com.jhoangamarra.condorlabstest.teams.presentation.ui.teams_list.TeamListFragment"
+        android:name="com.jhoangamarra.condorlabstest.presentation.ui.teams_list.TeamListFragment"
         android:label="fragment_team_list"
         tools:layout="@layout/fragment_team_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/teamDetailFragment"
-        android:name="com.jhoangamarra.condorlabstest.teams.presentation.ui.team_detail.TeamDetailFragment"
+        android:name="com.jhoangamarra.condorlabstest.presentation.ui.team_detail.TeamDetailFragment"
         android:label="fragment_team_detail"
         tools:layout="@layout/fragment_team_detail" >
         <argument
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.jhoangamarra.condorlabstest.teams.presentation.ui.splash.SplashFragment"
+        android:name="com.jhoangamarra.condorlabstest.presentation.ui.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
