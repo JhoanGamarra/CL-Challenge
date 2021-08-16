@@ -2,7 +2,7 @@
 
 - Get list of teams that belong to "Spanish la Liga".
 - Show the team detail.
-- TODO Change of league selection.
+- Spinner with league selector(Soccers Leagues)
 
 ### Versions
 
