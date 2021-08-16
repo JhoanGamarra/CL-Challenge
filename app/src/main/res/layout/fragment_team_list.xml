@@ -4,7 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".teams.presentation.ui.teams_list.TeamListFragment">
+    tools:context=".presentation.ui.teams_list.TeamListFragment">
+
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinner_leagues_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
+        app:smsp_isSearchable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:smsp_floatingLabelColor="@color/red_appbar"
+        app:smsp_floatingLabelText="Leagues"
+        app:smsp_searchHeaderBackgroundColor="@color/red_appbar"
+        app:smsp_searchHeaderTextColor="@color/white"
+        app:smsp_hint="Leagues"
+        app:smsp_hintColor="@color/red_appbar"
+        app:smsp_itemColor="@color/black85"
+        app:smsp_itemListColor="@color/black85"
+        app:smsp_itemListHintBackgroundColor="#808080"
+        app:smsp_itemListHintColor="#FFFFFF"
+        app:smsp_multilineError="false"
+        app:smsp_selectedItemListColor="#FF5252" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -16,11 +41,12 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_leagues_list"
+        app:layout_constraintVertical_bias="1.0"
         app:spanCount="2"
         tools:listitem="@layout/item_team" />
-
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progressBar"
