@@ -3,6 +3,7 @@
 - Get list of teams that belong to "Spanish la Liga".
 - Show the team detail.
 - Spinner with league selector(Soccers Leagues)
+- TODO dependency injection(Koin), Unit Testing(Junit)
 
 ### Versions
 
