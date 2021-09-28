@@ -6,26 +6,17 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.jhoangamarra.condorlabstest.App
 import com.jhoangamarra.condorlabstest.R
 import com.jhoangamarra.condorlabstest.core.AppConstants
 import com.jhoangamarra.condorlabstest.core.extension.invisible
 import com.jhoangamarra.condorlabstest.databinding.FragmentTeamListBinding
-import com.jhoangamarra.condorlabstest.data.local.AppDatabase
-import com.jhoangamarra.condorlabstest.data.local.source.LocalLeagueDataSource
-import com.jhoangamarra.condorlabstest.data.local.source.LocalTeamDataSource
-import com.jhoangamarra.condorlabstest.data.network.api.RetrofitClient
-import com.jhoangamarra.condorlabstest.data.network.source.RemoteLeagueDataSource
-import com.jhoangamarra.condorlabstest.data.network.source.RemoteTeamDataSource
-import com.jhoangamarra.condorlabstest.data.repository.ListLeagueRepositoryImpl
-import com.jhoangamarra.condorlabstest.data.repository.ListTeamsRepositoryImpl
-import com.jhoangamarra.condorlabstest.domain.use_cases.leagues_list.GetLeaguesBySportImpl
-import com.jhoangamarra.condorlabstest.domain.use_cases.teams_list.GetTeamsByLeagueImpl
 import com.jhoangamarra.condorlabstest.presentation.models.LeagueModelView
 import com.jhoangamarra.condorlabstest.presentation.models.TeamModelView
 import com.jhoangamarra.condorlabstest.presentation.ui.teams_list.recyclerview.TeamListAdapter
+import javax.inject.Inject
 
 private val TAG = TeamListFragment::class.java.simpleName
 
@@ -34,25 +25,13 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
     private lateinit var binding: FragmentTeamListBinding
     private lateinit var adapter: TeamListAdapter
 
-    private val viewModel by viewModels<TeamListViewModel> {
-        TeamListViewModelFactory(
-            GetTeamsByLeagueImpl(
-                ListTeamsRepositoryImpl(
-                    LocalTeamDataSource(
-                        AppDatabase.getDatabase(requireContext()).teamDao()
-                    ), RemoteTeamDataSource(RetrofitClient.apiService)
-                ),
-            ),
-            GetLeaguesBySportImpl(
-                ListLeagueRepositoryImpl(
-                    LocalLeagueDataSource(
-                        AppDatabase.getDatabase(requireContext()).leagueDao()
-                    ), RemoteLeagueDataSource(RetrofitClient.apiService)
-                )
-            )
-        )
-    }
+    @Inject
+    lateinit var viewModel: TeamListViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as App).applicationComponent.inject(this)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTeamListBinding.bind(view)
@@ -106,9 +85,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
                 ) {
                     viewModel.getTeams(result[position].id)
                 }
-
                 override fun onNothingSelected(adapterView: AdapterView<*>) {
-
                 }
             }
 

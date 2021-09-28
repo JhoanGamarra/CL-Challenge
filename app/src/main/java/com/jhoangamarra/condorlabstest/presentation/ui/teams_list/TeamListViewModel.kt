@@ -16,8 +16,9 @@ import com.jhoangamarra.condorlabstest.presentation.models.TeamModelView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class TeamListViewModel(
+class TeamListViewModel @Inject constructor(
     private val getTeamsByLeague: GetTeamsByLeague,
     private val getLeaguesBySport: GetLeaguesBySport
 ) : ViewModel() {

@@ -24,7 +24,7 @@ interface ApiService {
 
 }
 
-object RetrofitClient {
+/*object RetrofitClient {
 
     val apiService by lazy {
         Retrofit.Builder().baseUrl(AppConstants.BASE_URL)
@@ -32,4 +32,4 @@ object RetrofitClient {
             .build().create(ApiService::class.java)
     }
 
-}
+}*/

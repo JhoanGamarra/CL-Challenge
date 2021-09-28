@@ -4,8 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jhoangamarra.condorlabstest.domain.use_cases.leagues_list.GetLeaguesBySport
 import com.jhoangamarra.condorlabstest.domain.use_cases.teams_list.GetTeamsByLeague
+import javax.inject.Inject
 
-class TeamListViewModelFactory(
+class TeamListViewModelFactory @Inject constructor(
     private val getTeamsByLeague: GetTeamsByLeague,
     private val getLeaguesBySport: GetLeaguesBySport
 ) : ViewModelProvider.Factory {
