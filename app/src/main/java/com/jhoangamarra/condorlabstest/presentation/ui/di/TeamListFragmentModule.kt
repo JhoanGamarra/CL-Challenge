@@ -1,4 +1,4 @@
-package com.jhoangamarra.condorlabstest.domain.di
+package com.jhoangamarra.condorlabstest.presentation.ui.di
 
 import com.jhoangamarra.condorlabstest.domain.repository.ListLeagueRepository
 import com.jhoangamarra.condorlabstest.domain.repository.ListTeamsRepository
@@ -8,23 +8,28 @@ import com.jhoangamarra.condorlabstest.domain.use_cases.teams_list.GetTeamsByLea
 import com.jhoangamarra.condorlabstest.domain.use_cases.teams_list.GetTeamsByLeagueImpl
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Singleton
 
 
 @Module
-class UseCasesModule {
+@InstallIn(ViewModelComponent::class)
+class TeamListFragmentModule {
 
-    @Singleton
+    //El viewmodelComponent ya provee el viewmodel no es necesario hacerlo como un provides
+
     @Provides
+    @ViewModelScoped
     fun providesGetTeamsByLeague(repository: ListTeamsRepository) : GetTeamsByLeague{
         return GetTeamsByLeagueImpl(repository)
     }
 
-    @Singleton
     @Provides
+    @ViewModelScoped
     fun providesGetLeaguesBySport(repository: ListLeagueRepository) : GetLeaguesBySport{
         return GetLeaguesBySportImpl(repository)
     }
-
 
 }

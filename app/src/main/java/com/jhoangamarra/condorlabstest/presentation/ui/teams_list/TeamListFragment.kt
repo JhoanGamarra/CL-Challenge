@@ -6,9 +6,9 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.jhoangamarra.condorlabstest.App
 import com.jhoangamarra.condorlabstest.R
 import com.jhoangamarra.condorlabstest.core.AppConstants
 import com.jhoangamarra.condorlabstest.core.extension.invisible
@@ -16,22 +16,19 @@ import com.jhoangamarra.condorlabstest.databinding.FragmentTeamListBinding
 import com.jhoangamarra.condorlabstest.presentation.models.LeagueModelView
 import com.jhoangamarra.condorlabstest.presentation.models.TeamModelView
 import com.jhoangamarra.condorlabstest.presentation.ui.teams_list.recyclerview.TeamListAdapter
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 private val TAG = TeamListFragment::class.java.simpleName
 
+@AndroidEntryPoint
 class TeamListFragment : Fragment(R.layout.fragment_team_list) {
 
     private lateinit var binding: FragmentTeamListBinding
     private lateinit var adapter: TeamListAdapter
 
-    @Inject
-    lateinit var viewModel: TeamListViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity().application as App).applicationComponent.inject(this)
-    }
+    private val viewModel :TeamListViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTeamListBinding.bind(view)
