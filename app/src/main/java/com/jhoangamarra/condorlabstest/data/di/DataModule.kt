@@ -24,6 +24,7 @@ import javax.inject.Singleton
 class DataModule {
 
     @Provides
+    @Singleton
     fun providesListLeagueRepository(
         localLeagueDataSource: LocalLeagueDataSource,
         remoteLeagueDataSource: RemoteLeagueDataSource
@@ -33,6 +34,7 @@ class DataModule {
 
 
     @Provides
+    @Singleton
     fun providesListTeamsRepository(
         localTeamDataSource: LocalTeamDataSource,
         remoteTeamDataSource: RemoteTeamDataSource

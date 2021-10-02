@@ -1,6 +1,7 @@
 package com.jhoangamarra.condorlabstest.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.jhoangamarra.condorlabstest.data.local.AppDatabase
 import com.jhoangamarra.condorlabstest.data.local.source.LocalLeagueDataSource
@@ -11,6 +12,7 @@ import com.jhoangamarra.condorlabstest.data.network.source.RemoteTeamDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -21,8 +23,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application) = Room.databaseBuilder(
-        app,
+    fun provideDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
+        context,
         AppDatabase::class.java,
         "condorlabs_db"
     ).build()
