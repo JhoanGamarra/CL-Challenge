@@ -54,7 +54,7 @@ class GetTeamsByLeagueUseCaseTest {
 
         Assert.assertEquals(resultSuccessStatus, getTeamsByLeagueResponse)
 
-        coVerify {
+        coVerify(exactly = 1) {
             listTeamRepository.getTeamsByLeague(leagueId)
         }
 
@@ -76,7 +76,7 @@ class GetTeamsByLeagueUseCaseTest {
 
         Assert.assertEquals(emptySuccessStatus, getTeamsByLeagueResponse)
 
-        coVerify {
+        coVerify(exactly = 1) {
             listTeamRepository.getTeamsByLeague(notExistingLeagueId)
         }
 

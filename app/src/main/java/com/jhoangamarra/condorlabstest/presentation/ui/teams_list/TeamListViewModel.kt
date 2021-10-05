@@ -63,7 +63,8 @@ class TeamListViewModel @Inject constructor(
                         _isEmptyList.value = true
                     } else {
                         _isEmptyList.value = false
-                        _teams.value = result.data.map { it.toModelView() }
+                        _teams.value = result.data
+                            .map { it.toModelView() }
                     }
                 }
                 is ResultStatus.Failure -> {
@@ -71,7 +72,6 @@ class TeamListViewModel @Inject constructor(
                 }
             }
         }
-
     }
 
 

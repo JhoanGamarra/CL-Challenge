@@ -1,6 +1,5 @@
 package com.jhoangamarra.condorlabstest.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.jhoangamarra.condorlabstest.data.local.AppDatabase

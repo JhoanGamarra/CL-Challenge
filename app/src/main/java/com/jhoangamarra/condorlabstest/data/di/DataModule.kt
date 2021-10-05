@@ -1,11 +1,9 @@
 package com.jhoangamarra.condorlabstest.data.di
 
-import com.jhoangamarra.condorlabstest.data.local.AppDatabase
-import com.jhoangamarra.condorlabstest.data.local.dao.LeagueDao
-import com.jhoangamarra.condorlabstest.data.local.dao.TeamDao
+import com.jhoangamarra.condorlabstest.core.ConnectionCheck
+import com.jhoangamarra.condorlabstest.core.InternetConnectionCheck
 import com.jhoangamarra.condorlabstest.data.local.source.LocalLeagueDataSource
 import com.jhoangamarra.condorlabstest.data.local.source.LocalTeamDataSource
-import com.jhoangamarra.condorlabstest.data.network.api.ApiService
 import com.jhoangamarra.condorlabstest.data.network.source.RemoteLeagueDataSource
 import com.jhoangamarra.condorlabstest.data.network.source.RemoteTeamDataSource
 import com.jhoangamarra.condorlabstest.data.repository.ListLeagueRepositoryImpl
@@ -27,9 +25,10 @@ class DataModule {
     @Singleton
     fun providesListLeagueRepository(
         localLeagueDataSource: LocalLeagueDataSource,
-        remoteLeagueDataSource: RemoteLeagueDataSource
+        remoteLeagueDataSource: RemoteLeagueDataSource,
+        connectionCheck: ConnectionCheck
     ): ListLeagueRepository {
-        return ListLeagueRepositoryImpl(localLeagueDataSource, remoteLeagueDataSource)
+        return ListLeagueRepositoryImpl(localLeagueDataSource, remoteLeagueDataSource, connectionCheck)
     }
 
 
@@ -37,9 +36,15 @@ class DataModule {
     @Singleton
     fun providesListTeamsRepository(
         localTeamDataSource: LocalTeamDataSource,
-        remoteTeamDataSource: RemoteTeamDataSource
+        remoteTeamDataSource: RemoteTeamDataSource, connectionCheck: ConnectionCheck
     ): ListTeamsRepository {
-        return ListTeamsRepositoryImpl(localTeamDataSource, remoteTeamDataSource)
+        return ListTeamsRepositoryImpl(localTeamDataSource, remoteTeamDataSource, connectionCheck)
+    }
+
+    @Provides
+    @Singleton
+    fun providesNetworkConnectionCheck() : ConnectionCheck {
+        return InternetConnectionCheck()
     }
 
 
