@@ -10,6 +10,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -43,16 +44,14 @@ class GetTeamsByLeagueUseCaseTest {
 
         coEvery {
             listTeamRepository.getTeamsByLeague(leagueId)
-
         } answers {
             resultSuccessStatus
         }
 
-        val getTeamsByLeagueResponse = runBlocking {
-            getTeamsByLeague.invoke(leagueId)
+        runBlockingTest {
+            val getTeamsByLeagueResponse = getTeamsByLeague.invoke(leagueId)
+            Assert.assertEquals(resultSuccessStatus, getTeamsByLeagueResponse)
         }
-
-        Assert.assertEquals(resultSuccessStatus, getTeamsByLeagueResponse)
 
         coVerify(exactly = 1) {
             listTeamRepository.getTeamsByLeague(leagueId)
@@ -65,7 +64,6 @@ class GetTeamsByLeagueUseCaseTest {
 
         coEvery {
             listTeamRepository.getTeamsByLeague(notExistingLeagueId)
-
         } answers {
             emptySuccessStatus
         }

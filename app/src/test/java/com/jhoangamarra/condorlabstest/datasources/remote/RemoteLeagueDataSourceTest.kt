@@ -44,7 +44,7 @@ class RemoteLeagueDataSourceTest {
         remoteTeamDataSource = RemoteLeagueDataSource(apiService)
     }
 
-    /* @Test
+     @Test
      fun `given sportId and response is not successfully and body us null when getLeaguesBySport is called then should return ResultStatus Failure with Exception`() {
 
          val myMock = mockk<Response<LeagueNetworkResponse>>()
@@ -62,7 +62,7 @@ class RemoteLeagueDataSourceTest {
          Assert.assertEquals(expectedResponse , getLeaguesBySportResponse)
          coVerify(exactly = 1) { apiService.getLeagues() }
 
-     }*/
+     }
 
     @Test
     fun `given sportId and response is successfully and body is not null when getLeaguesBySport is called then should return a ResultStatus Success with leagues list`() {

@@ -47,7 +47,6 @@ class TeamListViewModel @Inject constructor(
 
     //TODO choose league by leagueId in a selector
     fun getTeams(leagueId: String) {
-
         _teams.value = emptyList()
         _isViewLoading.value = true
         _isEmptyList.value = false
