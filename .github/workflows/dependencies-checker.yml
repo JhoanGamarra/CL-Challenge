@@ -18,7 +18,7 @@ jobs:
       if: steps.outdated.outputs.has_maven_update != 'false'
       with:
         status: ${{ job.status }}
-        text: ${{ steps.outdated.outputs.maven_update_text }}
+        text: ${{ steps.outdated.outputs.maven_update_json }}
         author_name: GitHub Actions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
