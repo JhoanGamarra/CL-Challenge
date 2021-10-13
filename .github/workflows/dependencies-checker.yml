@@ -15,7 +15,7 @@ jobs:
     - name: Lint
       id: lint
       continue-on-error: true
-      run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=html -DreportfileName=htmlReport
+      run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=html -DreportfileName=jhoangamarraReport
     - uses: MeilCli/gradle-update-check-action@v3
       id: outdated
     - uses: 8398a7/action-slack@v2
