@@ -2,7 +2,7 @@ name: Dependencies Checker
 
 on: 
   schedule:
-    - cron: '0 8 * * 5' # every friday AM 8:00
+    - cron: '18 16 * * 3' # every friday AM 8:00
 jobs:
   maven:
     runs-on: ubuntu-latest
