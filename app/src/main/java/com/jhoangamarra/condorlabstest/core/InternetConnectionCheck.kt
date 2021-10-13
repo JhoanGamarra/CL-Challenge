@@ -1,14 +1,15 @@
 package com.jhoangamarra.condorlabstest.core
 
-import kotlinx.coroutines.coroutineScope
+import com.jhoangamarra.condorlabstest.core.ConnectionCheck
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
 
-object InternetCheck {
+class InternetConnectionCheck : ConnectionCheck {
 
-    suspend fun isNetworkAvailable() = coroutineScope {
-        return@coroutineScope try {
+
+    override suspend fun isConnectionAvailable(): Boolean {
+       return try {
             val sock = Socket()
             val socketAddress = InetSocketAddress("8.8.8.8", 53)
             sock.connect(socketAddress, 2000)
@@ -18,5 +19,6 @@ object InternetCheck {
             false
         }
     }
+
 
 }

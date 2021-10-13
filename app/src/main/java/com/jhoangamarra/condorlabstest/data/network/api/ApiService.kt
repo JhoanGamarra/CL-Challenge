@@ -1,12 +1,8 @@
 package com.jhoangamarra.condorlabstest.data.network.api
 
-import com.google.gson.GsonBuilder
-import com.jhoangamarra.condorlabstest.core.AppConstants
 import com.jhoangamarra.condorlabstest.data.network.model.league.LeagueNetworkResponse
 import com.jhoangamarra.condorlabstest.data.network.model.team.TeamNetworkResponse
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -24,7 +20,7 @@ interface ApiService {
 
 }
 
-object RetrofitClient {
+/*object RetrofitClient {
 
     val apiService by lazy {
         Retrofit.Builder().baseUrl(AppConstants.BASE_URL)
@@ -32,4 +28,4 @@ object RetrofitClient {
             .build().create(ApiService::class.java)
     }
 
-}
+}*/

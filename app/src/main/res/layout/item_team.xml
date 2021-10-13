@@ -8,6 +8,7 @@
     android:layout_centerHorizontal="true"
     app:cardElevation="8dp"
     android:layout_gravity="center"
+    android:id="@+id/card_view_team_item"
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

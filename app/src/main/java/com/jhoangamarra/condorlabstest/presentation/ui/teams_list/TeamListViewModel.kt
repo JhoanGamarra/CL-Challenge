@@ -13,11 +13,14 @@ import com.jhoangamarra.condorlabstest.domain.use_cases.teams_list.GetTeamsByLea
 import com.jhoangamarra.condorlabstest.presentation.mappers.toModelView
 import com.jhoangamarra.condorlabstest.presentation.models.LeagueModelView
 import com.jhoangamarra.condorlabstest.presentation.models.TeamModelView
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class TeamListViewModel(
+@HiltViewModel
+class TeamListViewModel @Inject constructor(
     private val getTeamsByLeague: GetTeamsByLeague,
     private val getLeaguesBySport: GetLeaguesBySport
 ) : ViewModel() {
@@ -44,7 +47,6 @@ class TeamListViewModel(
 
     //TODO choose league by leagueId in a selector
     fun getTeams(leagueId: String) {
-
         _teams.value = emptyList()
         _isViewLoading.value = true
         _isEmptyList.value = false
@@ -60,7 +62,8 @@ class TeamListViewModel(
                         _isEmptyList.value = true
                     } else {
                         _isEmptyList.value = false
-                        _teams.value = result.data.map { it.toModelView() }
+                        _teams.value = result.data
+                            .map { it.toModelView() }
                     }
                 }
                 is ResultStatus.Failure -> {
@@ -68,7 +71,6 @@ class TeamListViewModel(
                 }
             }
         }
-
     }
 
 
