@@ -28,11 +28,18 @@ jobs:
         path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
         from: 'json'
         to: 'json'
-    - name: Slack Notification
     - uses: 8398a7/action-slack@v2
       with:
         status: ${{ job.status }}
         text: ${{ steps.formatJson.outputs.data }}
+        author_name: Bot
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - uses: 8398a7/action-slack@v2
+      with:
+        status: ${{ job.status }}
+        text: ${{ steps.json2yml.outputs.data }}
         author_name: Bot
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
