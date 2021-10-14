@@ -87,6 +87,10 @@ tasks.named("dependencyUpdates").configure {
 
     outputFormatter = { result ->
         def updatable = result.outdated.dependencies
+        String outputDir = "${project.buildDir.path.replace(project.projectDir.path + '/', '')}/dependencyUpdates"
+        println("Directory ::")
+        println(outputDir)
+
         if (!updatable.isEmpty()) {
 
             def outdatedDependencies = []
@@ -103,6 +107,10 @@ tasks.named("dependencyUpdates").configure {
             def jsonStr = JsonOutput.toJson(outdated: outdatedDependencies)
             def json_beauty = JsonOutput.prettyPrint(jsonStr)
             println(json_beauty)
+
+            File filename = new File(outputDir, 'proreport2' + '.' + 'json')
+            project.file(outputDir).mkdirs()
+            project.file(filename).write(json_beauty)
 
             /*def writer = new StringWriter()
             def html = new MarkupBuilder(writer)
