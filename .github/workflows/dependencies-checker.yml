@@ -27,21 +27,14 @@ jobs:
       with:
         path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
         from: 'json'
-        to: 'json'
+        to: 'yml'
+    - name: Slack Notification
     - uses: 8398a7/action-slack@v2
       with:
         status: ${{ job.status }}
         text: ${{ steps.formatJson.outputs.data }}
-        author_name: Jhoan Gamarra
+        author_name: Bot
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2.0.2
-      env:
-        SLACK_CHANNEL: bot
-        SLACK_COLOR: '#FF0000'
-        SLACK_MESSAGE: ${{ steps.formatJson.outputs.data }}
-        SLACK_TITLE: 'Dependencies Checker'
-        SLACK_USERNAME: bot
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+ 
