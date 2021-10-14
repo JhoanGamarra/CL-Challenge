@@ -24,7 +24,7 @@ jobs:
         from: 'json'
         to: 'yaml'
     - name: Print json2yaml result
-      run: echo "${{ steps.json2yaml.outputs.data }}"
+      run: echo "${{ steps.formatJson.outputs.data }}"
     - uses: 8398a7/action-slack@v2
       if: steps.outdated.outputs.has_maven_update != 'false'
       with:
@@ -40,7 +40,7 @@ jobs:
       env:
         SLACK_CHANNEL: bot
         SLACK_COLOR: '#FF0000'
-        SLACK_MESSAGE: ${{ steps.json2yaml.outputs.data }}
+        SLACK_MESSAGE: ${{ steps.formatJson.outputs.data }}
         SLACK_TITLE: 'Dependencies Checker'
         SLACK_USERNAME: bot
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
