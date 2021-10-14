@@ -13,28 +13,19 @@ jobs:
     - name: Grant permission
       run: chmod +x gradlew
     - name: Dependencies Reporter
-      run: ./gradlew -q dependencyUpdates
+      run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json -DreportfileName=slack
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
-        path: 'build/dependencyUpdates/proreport2.json'
+        path: 'build/dependencyUpdates/slack.json'
         from: 'json'
         to: 'yaml'
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
-        path: 'build/dependencyUpdates/proreport.json'
+        path: 'build/dependencyUpdates/slack.json'
         from: 'json'
         to: 'json'
-    - uses: 8398a7/action-slack@v2
-      if: steps.outdated.outputs.has_maven_update != 'false'
-      with:
-        status: ${{ job.status }}
-        text: ${{ steps.outdated.outputs.maven_update_text }}
-        author_name: Jhoan Gamarra
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     - uses: 8398a7/action-slack@v2
       with:
         status: ${{ job.status }}
