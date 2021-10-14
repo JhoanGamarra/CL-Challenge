@@ -15,7 +15,7 @@ jobs:
     - name: Dependencies Reporter
       run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
     - name: cat file
-      run: cat build/dependencyUpdates/report.json
+      run: cat /home/runner/work/CL-Challenge/CL-Challenge/build/dependencyUpdates/report.json
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
@@ -25,7 +25,7 @@ jobs:
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
-        path: 'build/dependencyUpdates/report.json'
+        path: '/home/runner/work/CL-Challenge/CL-Challenge/build/dependencyUpdates/report.json'
         from: 'json'
         to: 'json'
     - uses: 8398a7/action-slack@v2
