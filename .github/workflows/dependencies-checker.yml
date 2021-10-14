@@ -12,21 +12,18 @@ jobs:
         java-version: 1.8
     - name: Grant permission
       run: chmod +x gradlew
-    - uses: MeilCli/gradle-update-check-action@v3
-      id: outdated
-      with:
-        revision : integration
-        output_text_style : short
+    - name: Dependencies Reporter
+      run: ./gradlew -q dependencyUpdates
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
-        path: 'build/dependencyUpdates/report.json'
+        path: 'build/dependencyUpdates/proreport2.json'
         from: 'json'
         to: 'yaml'
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
-        path: 'build/dependencyUpdates/report.json'
+        path: 'build/dependencyUpdates/proreport.json'
         from: 'json'
         to: 'json'
     - uses: 8398a7/action-slack@v2
