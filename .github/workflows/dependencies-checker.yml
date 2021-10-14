@@ -27,7 +27,7 @@ jobs:
       with:
         path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
         from: 'json'
-        to: 'yml'
+        to: 'json'
     - name: Slack Notification
     - uses: 8398a7/action-slack@v2
       with:
