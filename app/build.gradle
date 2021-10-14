@@ -112,6 +112,9 @@ tasks.named("dependencyUpdates").configure {
             project.file(outputDir).mkdirs()
             project.file(filename).write(json_beauty)
 
+
+            println('file name : ' + filename)
+
             /*def writer = new StringWriter()
             def html = new MarkupBuilder(writer)
 
