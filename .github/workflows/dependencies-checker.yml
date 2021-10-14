@@ -14,8 +14,10 @@ jobs:
       run: chmod +x gradlew
     - name: Dependencies Reporter
       run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
-    - name: cat file
-      run: cat /home/runner/work/CL-Challenge/CL-Challenge/build/dependencyUpdates/report.json
+    - name: ls folder
+      run: ls 
+    - name: ls folder
+      run: ls /home/runner/work/CL-Challenge/CL-Challenge
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
