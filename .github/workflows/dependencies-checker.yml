@@ -17,11 +17,19 @@ jobs:
       with:
         revision : integration
         output_text_style : short
+    - uses: fabasoad/yaml-json-xml-converter-action@main
+      id: formatJson
+      with:
+        path: steps.outdated.outputs.maven_update_json
+        from: 'json'
+        to: 'yaml'
+    - name: Print json2yaml result
+      run: echo "${{ steps.json2yaml.outputs.data }}"
     - uses: 8398a7/action-slack@v2
       if: steps.outdated.outputs.has_maven_update != 'false'
       with:
         status: ${{ job.status }}
-        text: ${{ steps.outdated.outputs.maven_update_json }}
+        text: ${{ steps.outdated.outputs.maven_update_text }}
         author_name: Jhoan Gamarra
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,7 +40,7 @@ jobs:
       env:
         SLACK_CHANNEL: bot
         SLACK_COLOR: '#FF0000'
-        SLACK_MESSAGE: ${{ steps.outdated.outputs.maven_update_text }}
+        SLACK_MESSAGE: ${{ steps.json2yaml.outputs.data }}
         SLACK_TITLE: 'Dependencies Checker'
         SLACK_USERNAME: bot
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
