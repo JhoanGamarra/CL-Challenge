@@ -13,17 +13,17 @@ jobs:
     - name: Grant permission
       run: chmod +x gradlew
     - name: Dependencies Reporter
-      run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json -DreportfileName=slack
+      run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
-        path: 'build/dependencyUpdates/slack.json'
+        path: 'build/dependencyUpdates/report.json'
         from: 'json'
         to: 'yaml'
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
-        path: 'build/dependencyUpdates/slack.json'
+        path: 'build/dependencyUpdates/report.json'
         from: 'json'
         to: 'json'
     - uses: 8398a7/action-slack@v2
