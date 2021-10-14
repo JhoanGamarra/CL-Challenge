@@ -20,7 +20,7 @@ jobs:
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
-        path: 'data.json'
+        path: 'build/dependencyUpdates/report.json'
         from: 'json'
         to: 'yaml'
     - uses: fabasoad/yaml-json-xml-converter-action@main
@@ -41,7 +41,7 @@ jobs:
     - uses: 8398a7/action-slack@v2
       with:
         status: ${{ job.status }}
-        text: ${{ steps.json2yml.outputs.data }}
+        text: ${{ steps.formatJson.outputs.data }}
         author_name: Jhoan Gamarra
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
