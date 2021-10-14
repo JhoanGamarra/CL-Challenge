@@ -14,6 +14,8 @@ jobs:
       run: chmod +x gradlew
     - name: Dependencies Reporter
       run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
+    - name: cat file
+      run: cat build/dependencyUpdates/report.json
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
