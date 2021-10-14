@@ -15,8 +15,8 @@ jobs:
     - uses: MeilCli/gradle-update-check-action@v3
       id: outdated
       with:
-        revision : release
-        output_text_style : long
+        revision : integration
+        output_text_style : short
     - uses: 8398a7/action-slack@v2
       if: steps.outdated.outputs.has_maven_update != 'false'
       with:
