@@ -20,7 +20,7 @@ jobs:
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
-        path: steps.outdated.outputs.maven_update_json
+        path: 'data.json'
         from: 'json'
         to: 'yaml'
     - name: Print json2yaml result
