@@ -13,21 +13,19 @@ jobs:
     - name: Grant permission
       run: chmod +x gradlew
     - name: Dependencies Reporter
-      run: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
-    - name: ls folder
-      run: ls *
+      run: ./gradlew dependencyUpdates
     - name: ls folder
       run: ls /home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yml
       with:
-        path: 'build/dependencyUpdates/report.json'
+        path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
         from: 'json'
         to: 'yaml'
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
-        path: '/home/runner/work/CL-Challenge/CL-Challenge/build/dependencyUpdates/report.json'
+        path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
         from: 'json'
         to: 'json'
     - uses: 8398a7/action-slack@v2
