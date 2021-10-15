@@ -32,4 +32,4 @@ jobs:
         success_text: 'Dependencies checker was finished successfully'
         fields: |
           [{ "title": "Wallet Outdated Libraries", "value": "Libraries that need your review", "short": false },
-          "title": "Timestamp", "value": "${Date.now()}", "short": true }]
+          {"title": "Timestamp", "value": "${Date.now()}", "short": true }]
