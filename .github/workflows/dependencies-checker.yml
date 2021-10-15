@@ -15,12 +15,6 @@ jobs:
     - name: Dependencies Reporter
       run: ./gradlew dependencyUpdates
     - uses: fabasoad/yaml-json-xml-converter-action@main
-      id: json2yml
-      with:
-        path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
-        from: 'json'
-        to: 'yaml'
-    - uses: fabasoad/yaml-json-xml-converter-action@main
       id: formatJson
       with:
         path: '/home/runner/work/CL-Challenge/CL-Challenge/app/build/dependencyUpdates/proreport2.json'
@@ -29,8 +23,11 @@ jobs:
     - name: notification
       uses: edge/simple-slack-notify@master
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_URL: ${{ https://hooks.slack.com/services/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 }}
       with:
         channel: '#bot'
         text: ${{ steps.formatJson.outputs.data }}
         color: 'good'
+        success_text: 'Dependencies checker was finished successfully'
+        fields: |
+          [{ "title": "Checker", "value": "Oudated Libraries", "short": true }]
