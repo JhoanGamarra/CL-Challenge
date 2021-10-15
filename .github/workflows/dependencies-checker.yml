@@ -25,11 +25,9 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
       with:
-        channel: '#bot'
         status: ${{ job.status }}
         text: ${{ steps.formatJson.outputs.data }}
         color: 'good'
         success_text: 'Dependencies checker was finished successfully'
         fields: |
-          [{ "title": "Wallet Outdated Libraries", "value": "Libraries that need your review", "short": false },
-          {"title": "Timestamp", "value": "${Date.now()}", "short": true }]
+          [{ "title": "Wallet Outdated Libraries", "value": "Libraries that need your review", "short": true }]
