@@ -39,6 +39,15 @@ jobs:
         status: ${{ job.status }}
         text: ${{ steps.json2yml.outputs.data }}
         author_name: Bot
+        channel : '#full-menu-digital'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: notification
+      uses: edge/simple-slack-notify@master
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      with:
+        channel: '#bot'
+        text: ${{ steps.json2yml.outputs.data }}
+        color: 'good'
