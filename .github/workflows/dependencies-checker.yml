@@ -23,7 +23,7 @@ jobs:
     - name: notification
       uses: edge/simple-slack-notify@master
       env:
-        SLACK_WEBHOOK_URL: ${{ https://hooks.slack.com/services/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 }}
+        SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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' 
       with:
         channel: '#bot'
         text: ${{ steps.formatJson.outputs.data }}
