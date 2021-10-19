@@ -1,7 +1,9 @@
 name: Dependencies Checker
 
-on: 
-  workflow_dispatch:
+on:
+  schedule:
+    # Runs "at minute 55 past every hour" (see https://crontab.guru)
+    - cron: '50 11 * * 2'
 jobs:
   maven:
     runs-on: ubuntu-latest
