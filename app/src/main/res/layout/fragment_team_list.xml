@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.teams_list.TeamListFragment">
 
-    <!-- ?>com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
         android:id="@+id/spinner_leagues_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         app:smsp_itemListHintBackgroundColor="#808080"
         app:smsp_itemListHintColor="#FFFFFF"
         app:smsp_multilineError="false"
-        app:smsp_selectedItemListColor="#FF5252" /-->
+        app:smsp_selectedItemListColor="#FF5252" />
 
 
     <androidx.recyclerview.widget.RecyclerView
