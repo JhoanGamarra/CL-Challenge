@@ -1,0 +1,21 @@
+name: Dependencies Checker
+
+on:
+  schedule:
+    # Runs "at every 5 minutes" (see https://crontab.guru)
+    - cron: '*/5 * * * *'
+jobs:
+  maven:
+    runs-on: ubuntu-latest
+    steps:
+    - name: notification
+      uses: edge/simple-slack-notify@master
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
+      with:
+        status: ${{ job.status }}
+        text: 'Testing cron job every 5 minutes'
+        color: 'good'
+        success_text: 'Dependencies checker was finished successfully'
+        fields: |
+          [{ "title": "Wallet Outdated Libraries", "value": "Libraries that need your review", "short": true }]
