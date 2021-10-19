@@ -73,7 +73,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
         Log.d(TAG, "Teams : $result")
        // binding.spinnerLeaguesList.item = result
 
-        /*binding.spinnerLeaguesList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerLeaguesList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     adapterView: AdapterView<*>,
                     view: View,
@@ -84,7 +84,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
                 }
                 override fun onNothingSelected(adapterView: AdapterView<*>) {
                 }
-            }*/
+            }
 
     }
 
