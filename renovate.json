@@ -1,7 +1,8 @@
 {
+  "commitBodyTable" :  true
   "packageRules": [
     {
-      "matchPackageNames": ["kotlin"],
+      "matchPackageNames": ["org.jetbrains.kotlin:kotlin-stdlib"],
       "enabled": false
     }
   ],
