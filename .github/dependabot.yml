@@ -4,6 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: daily
+    commit_message:
+      prefix: "NONJIRA"
     open-pull-requests-limit: 100
     ignore:
       - dependency-name: org.jetbrains.kotlin:kotlin-stdlib
@@ -12,5 +14,3 @@ updates:
       - "Dependabot"
     pull-request-branch-name:
       separator: _
-    commit_message:
-      prefix: "NONJIRA"
