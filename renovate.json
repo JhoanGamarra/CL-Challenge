@@ -2,7 +2,7 @@
   "prTitle" : "feature/myorTitle",
   "packageRules": [
     {
-      "matchPackageNames": ["kotlin-stdlib", "kotlin-gradle-plugin"],
+      "matchPackageNames": ["kotlin", "kotlin-stdlib", "kotlin-gradle-plugin"],
       "enabled": false
     }
   ],
