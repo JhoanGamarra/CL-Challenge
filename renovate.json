@@ -5,8 +5,8 @@
   "labels": ["dependencies"],
   "branchPrefix":"feature/",
   "additionalBranchPrefix":"NONJIRA-1",
-  "branchTopic" : "dependencies_to_update",
+  "branchTopic" : "_dependencies_to_update",
   "commitMessagePrefix" : "feature/",
   "commitMessageAction":"NONJIRA-1",
-  "commitMessageTopic" : "dependencies_to_update"
+  "commitMessageTopic" : "_dependencies_to_update"
 }
