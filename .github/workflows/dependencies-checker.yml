@@ -1,13 +1,15 @@
 name: Dependencies Checker
 
 on:
-  schedule:
-    # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '0 0 * * 3'
+  workflow_dispatch:
 jobs:
   maven:
     runs-on: ubuntu-latest
     steps:
+    - name: Timezone config
+      run:  sudo timedatectl set-timezone America/Bogota
+    - name: Timezone check
+      run:  timedatectl
     - uses: actions/checkout@v1
     - uses: actions/setup-java@v1
       with:
