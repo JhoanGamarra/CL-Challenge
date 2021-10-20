@@ -3,5 +3,8 @@ updates:
   - package-ecosystem: gradle
     directory: "/"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    open-pull-requests-limit: 100
+    ignore:
+      - dependency-name: org.jetbrains.kotlin:kotlin-stdlib
+      - dependency-name: org.jetbrains.kotlin:kotlin-gradle-plugin
