@@ -1,5 +1,5 @@
 {
-  "enabledManagers": ["gradle"]
+  "enabledManagers": ["gradle"],
   "commitBodyTable" :  true,
   "packageRules": [
     {
