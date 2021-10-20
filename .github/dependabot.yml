@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: daily
     commit_message:
-      prefix: "NONJIRA"
+      prefix: NONJIRA
     open-pull-requests-limit: 100
     ignore:
       - dependency-name: org.jetbrains.kotlin:kotlin-stdlib
