@@ -1,5 +1,11 @@
 {
-  "ignoreDeps": [" org.jetbrains.kotlin:kotlin-stdlib" , "org.jetbrains.kotlin:kotlin-gradle-plugin"],
+  "prTitle" : "feature/myorTitle",
+  "packageRules": [
+    {
+      "matchPackageNames": ["kotlin-stdlib", "kotlin-gradle-plugin"],
+      "enabled": false
+    }
+  ],
   "labels": ["dependencies"],
   "branchPrefix":"feature/",
   "additionalBranchPrefix":"NONJIRA-1",
