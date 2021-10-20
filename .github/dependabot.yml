@@ -9,7 +9,8 @@ updates:
       - dependency-name: org.jetbrains.kotlin:kotlin-stdlib
       - dependency-name: org.jetbrains.kotlin:kotlin-gradle-plugin
     labels:
-      - "Gradle Dependencies"
       - "Dependabot"
     pull-request-branch-name:
       separator: _
+    commit_message:
+      prefix: "NONJIRA"
