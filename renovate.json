@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  
   "labels": ["dependencies"],
   "branchPrefix":"feature/",
   "additionalBranchPrefix":"NONJIRA-1",
