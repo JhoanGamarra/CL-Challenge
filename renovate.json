@@ -1,5 +1,5 @@
 {
-  "enabledManagers": ["gradle", "maven"],
+  "deepExtract" : true,
   "commitBodyTable" :  true,
   "packageRules": [
     {
@@ -10,8 +10,8 @@
   "labels": ["dependencies"],
   "branchPrefix":"feature/",
   "additionalBranchPrefix":"NONJIRA-1",
-  "branchTopic" : "_dependencies_to_update",
+  "branchTopic" : "_dependencies_to_update_condor",
   "commitMessagePrefix" : "feature/",
   "commitMessageAction":"NONJIRA-1",
-  "commitMessageTopic" : "_dependencies_to_update"
+  "commitMessageTopic" : "_dependencies_to_update_condor"
 }
