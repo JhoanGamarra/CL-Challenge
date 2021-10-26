@@ -71,7 +71,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
 
     private val fetchLeagues = Observer<List<LeagueModelView>> { result ->
         Log.d(TAG, "Teams : $result")
-       // binding.spinnerLeaguesList.item = result
+       binding.spinnerLeaguesList.item = result
 
         binding.spinnerLeaguesList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(

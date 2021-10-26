@@ -19,13 +19,3 @@ interface ApiService {
 
 
 }
-
-/*object RetrofitClient {
-
-    val apiService by lazy {
-        Retrofit.Builder().baseUrl(AppConstants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(ApiService::class.java)
-    }
-
-}*/
