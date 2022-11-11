@@ -13,7 +13,7 @@ buildscript {
         //Safe Args
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
         //Hilt
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.39.1"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.44.1"
 
         classpath "com.github.ben-manes:gradle-versions-plugin:0.39.0"
 
